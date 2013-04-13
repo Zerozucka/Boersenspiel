@@ -1,25 +1,23 @@
-/*
- * ShareDeposit
- */
 public class ShareDeposit extends Asset {
     private ShareItem[] itemArray = new ShareItem[10]; // contains all shareItems of one user
 
-    /*
-     * Konstruktor
+    /**
+     * ShareDeposit(String name)
      */
     public ShareDeposit(String name) {
         super(name);
     }
 
-    /*
-     * getItemArray();
+    /**
+     * getItemArray()
      */
     public ShareItem[] getItemArray() {
         return itemArray;
     }
 
-    /*
-     * addShareItem(ShareItem item); f�gt ein neues ShareItem am ende der itemArray ein
+    /**
+     * addShareItem(ShareItem item)
+     *      fuegt ein neues ShareItem am ende der itemArray ein
      */
     private void addShareItem(ShareItem item) {
         int currentPos = 0;
@@ -35,10 +33,12 @@ public class ShareDeposit extends Asset {
             itemArray[currentPos] = item;
     }
 
-    /*
-     * addShare(Share share, long amount); sucht in der itemArray nach der share, -> vorhanden, anzahl wird um amount erh�ht -> nicht vorhanden, neues ShareItem wird erstellt und hinzugef�gt
+    /**
+     * addShare(Share share, long amount)
+     *      sucht in der itemArray nach der share, -> vorhanden, anzahl wird um amount erhoeht
+     *      -> nicht vorhanden, neues ShareItem wird erstellt und hinzugefuegt
      * 
-     * Funktioniert jetzt, falsche equals methode war ausgew�hlt
+     *      Funktioniert jetzt, falsche equals methode war ausgewaehlt
      */
     public void addShare(Share share, long amount) {
         int currentPos = 0;
@@ -57,9 +57,11 @@ public class ShareDeposit extends Asset {
         System.out.println("Erfolgreich!");
     }
 
-    /*
-     * deleteShareItem(ShareItem item); sucht nach �bergebenem ShareItem und l�scht es
+    /**
+     * deleteShareItem(ShareItem item); 
+     *      sucht nach uebergebenem ShareItem und loescht es
      */
+    @SuppressWarnings("unused")
     private void deleteShareItem(ShareItem item) { // methodes to delete items, get choosen by handover type
         int foundPos = 0;
 
@@ -72,26 +74,10 @@ public class ShareDeposit extends Asset {
             deleteAtPos(itemArray, foundPos);
     }
 
-    /*
-     * deleteShareItem(String s) sucht nach ShareItem mit dem �bergebenem Namen un l�scht es
+    /**
+     * deleteShare(Share share, long amount); 
+     *      sucht nach einem ShareItem mit der uebergebenen Share in itemArray und vermindert die amount; wenn <= 0 loeschen
      */
-    private void deleteShareItem(String s) {
-        int foundPos = 0;
-
-        while (itemArray[foundPos] != null && !itemArray[foundPos].getName().equals(s) && foundPos < itemArray.length)
-            foundPos++;
-
-        if (foundPos == itemArray.length)
-            System.out.println("Item not found");
-        else
-            deleteAtPos(itemArray, foundPos);
-
-    }
-
-    /*
-     * deleteShare(Share share, long amount); sucht nach einem ShareItem mit der �bergebenen Share in itemArray und vermindert die amount; wenn <= 0 l�schen
-     */
-
     public void deleteShare(Share share, long amount) { // methodes to delete items, get choosen by handover type
         int foundPos = 0;
 
@@ -111,6 +97,9 @@ public class ShareDeposit extends Asset {
         }
     }
 
+    /**
+     * getCurrentValue()
+     */
     public long getCurrentValue() {
         long value = 0;
         for (int c = 0; itemArray[c] != null && c < itemArray.length; c++)
@@ -118,8 +107,8 @@ public class ShareDeposit extends Asset {
         return value;
     }
 
-    /*
-     * ShareItemArrayOps
+    /**
+     * arrayAdjust(ShareItem[] array)
      */
     private ShareItem[] arrayAdjust(ShareItem[] array) { // increases the array length +10
         ShareItem[] newArray = new ShareItem[array.length + 10];
@@ -130,6 +119,9 @@ public class ShareDeposit extends Asset {
         return newArray;
     }
 
+    /**
+     * deleteAtPos(ShareItem[] array, int pos)
+     */
     private ShareItem[] deleteAtPos(ShareItem[] array, int pos) {
         ShareItem[] newArray = new ShareItem[array.length];
 
@@ -142,7 +134,7 @@ public class ShareDeposit extends Asset {
         return newArray;
     }
 
-    /*
+    /**
      * toString()
      */
     public String toString() {
