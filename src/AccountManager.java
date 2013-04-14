@@ -1,6 +1,8 @@
 import exceptionpackage.DuplicateException;
 import exceptionpackage.NotEnoughMoneyException;
 
+	//commit test
+
 public interface AccountManager {
     /**
      * createPlayer(String name)
