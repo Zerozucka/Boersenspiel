@@ -37,6 +37,6 @@ public class Player {
      * toString()
      */
     public String toString() {
-        return ("Der Spieler " + name + " besitzt: \n" + depo.toString() + " Aktien und hat " + acc.toString());
+        return ("Der Spieler " + name + " besitzt: \n" + depo.toString() + " und hat " + acc.toString());
     }
 }

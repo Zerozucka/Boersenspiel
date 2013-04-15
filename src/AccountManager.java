@@ -6,6 +6,7 @@ public interface AccountManager {
      * createPlayer(String name)
      */
     public void createPlayer(String name) throws DuplicateException;
+    
 
     /**
      * buyShare(String playerName, String shareName, long amount)
@@ -19,27 +20,17 @@ public interface AccountManager {
     public void sellShare(String playerName, String shareName, long amount);
 
     /**
-     * getAssetValue(String playerName, String type) 
-     *      gibt den wert eines bestimmten Assets zurueck types: 
-     *          - cashAccount 
-     *          - deposit
-     *          - fuer shareItem Aktienname uebergeben
+     * getAssetValue(String playerName, String type)
      */
     public long getAssetValue(String playerName);
 
     /**
-     * getShareRate(String shareName)
+     * getDepositValue(String playerName)
      */
-    public long getShareRate(String shareName);
-
+    public long getDepositValue(String playerName);
+    
     /**
-     * allShares()
+     * getCashAccountValue(String playerName)
      */
-    public String allShares();
-
-    /**
-     * createShare(String name, long rate)
-     * creates a share and adds it to a list of all available shares
-     */
-    public void createShare(String name, long rate) throws DuplicateException;
+    public long getCashAccountValue(String playerName);
 }

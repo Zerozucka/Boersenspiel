@@ -6,6 +6,7 @@ import exceptionpackage.PlayerNotFoundException;
 public class Main {
     public static void main(String[] args) {
         AccountManagerImpl acc = new AccountManagerImpl();
+        StockPriceProvider spp = acc.getStockPriceProvider();
         
         System.out.println("Trying to create Players");
         try {
@@ -24,9 +25,9 @@ public class Main {
 
         System.out.println("Trying to create Shares");
         try {
-            acc.createShare("BMW", 500);
-            acc.createShare("Google", 70000);
-            acc.createShare("VW", 100);
+            spp.createShare("BMW", 500);
+            spp.createShare("Google", 70000);
+            spp.createShare("VW", 100);
             System.out.println("finished!\n");
         } catch(DuplicateException e) {
             e.printStackTrace();

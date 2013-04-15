@@ -2,13 +2,57 @@ import exceptionpackage.DuplicateException;
 import exceptionpackage.NegativeAmountException;
 import exceptionpackage.NotEnoughMoneyException;
 import exceptionpackage.PlayerNotFoundException;
-import exceptionpackage.ShareNotFoundException;
 
 public class AccountManagerImpl implements AccountManager {
 
     private Player[] playerArray = new Player[10];
-    private Share[] shareArray = new Share[100];
+    private StockPriceProvider spp = null;
+    
+    public AccountManagerImpl() {
+        this.spp = new StockPriceProvider();
+    }
 
+    /**
+     * getStockPriceProvider()
+     */
+    public StockPriceProvider getStockPriceProvider() {
+        return spp;
+    }
+    
+    /**
+     * buyShare(String playerName, String shareName, long amount)
+     * @throws NotEnoughMoneyException 
+     */
+    public void buyShare(String playerName, String shareName, long amount) throws NotEnoughMoneyException {
+        Player foundPlayer = findPlayer(playerName);
+        Share foundShare = spp.findShare(shareName);
+        
+        if (amount < 0)
+            throw new NegativeAmountException("Negativer Amount nicht möglich");
+        System.out.println(foundPlayer.getName() + " will eine Aktie von " + foundShare.getName() + " kaufen!");
+        
+        long cost = foundShare.getRate() * amount;
+        
+        foundPlayer.getAccount().subMoney(cost);
+        foundPlayer.getDeposit().addShare(foundShare, amount);
+    }
+    
+    /**
+     * sellShare(String playerName, String shareName, long amount) 
+     */
+    public void sellShare(String playerName, String shareName, long amount) {
+        Player foundPlayer = findPlayer(playerName);
+        Share foundShare = spp.findShare(shareName);
+        
+        if (amount < 0)
+            throw new NegativeAmountException("Negativer Amount nicht möglich");
+        System.out.println(foundPlayer.getName() + " will eine Aktie von " + foundShare.getName() + " verkaufen!");
+
+        long cost = foundShare.getRate() * amount;
+        foundPlayer.getDeposit().deleteShare(foundShare, amount);
+        foundPlayer.getAccount().addMoney(cost);
+    }
+    
     /**
      * createPlayer(String name)
      *      ueberprueft, ob schon ein Spieler mit dem Namen existiert, wenn das der Fall ist wird eine DuplicationException geworfen
@@ -79,115 +123,6 @@ public class AccountManagerImpl implements AccountManager {
         }
         return duplication;
     }
-
-    /**
-     * buyShare(String playerName, String shareName, long amount)
-     * @throws NotEnoughMoneyException 
-     */
-    public void buyShare(String playerName, String shareName, long amount) throws NotEnoughMoneyException {
-        Share foundShare = findShare(shareName);
-        Player foundPlayer = findPlayer(playerName);
-        
-        if (amount < 0)
-            throw new NegativeAmountException("Negativer Amount nicht möglich");
-        System.out.println(foundPlayer.getName() + " will eine Aktie von " + foundShare.getName() + " kaufen!");
-        
-        long cost = foundShare.getRate() * amount;
-        
-        foundPlayer.getAccount().subMoney(cost);
-        foundPlayer.getDeposit().addShare(foundShare, amount);
-    }
-    
-    /**
-     * sellShare(String playerName, String shareName, long amount) 
-     */
-    public void sellShare(String playerName, String shareName, long amount) {
-        Share foundShare = findShare(shareName);
-        Player foundPlayer = findPlayer(playerName);
-        
-        if (amount < 0)
-            throw new NegativeAmountException("Negativer Amount nicht möglich");
-        System.out.println(foundPlayer.getName() + " will eine Aktie von " + foundShare.getName() + " verkaufen!");
-
-        long cost = foundShare.getRate() * amount;
-        foundPlayer.getAccount().addMoney(cost);
-        foundPlayer.getDeposit().deleteShare(foundShare, amount);
-    }
-
-    /**
-     * getShareRate(String shareName)
-     *      gibt den aktuellen Kurs eine Share zurueck. Suche anhand von Name (String).
-     */
-    public long getShareRate(String shareName) {
-        Share foundShare = findShare(shareName);
-        long tmp = foundShare.getRate();
-        return tmp;
-    }
-
-    /**
-     * allShares() returns shareArray.toString()
-     *      String mit allen Shares, Name und Wert
-     */
-    public String allShares() {
-        String s = "";
-        for (int c = 0; shareArray[c] != null && c < playerArray.length; c++)
-            s = s + shareArray[c].toString() + '\r';
-        return s;
-    }
-
-    /**
-     * createShare(String name, long rate)
-     *      erzeugt eine neue Share und fuegt sie an die ShareArray an. 
-     *      Ueberprueft vor dem Anfuegen, ob die Share schon vorhanden ist.
-     */
-    public void createShare(String name, long rate) throws DuplicateException {
-        if (checkShareDuplication(name)) {
-            throw new DuplicateException("Share schon vorhanden!");
-        } else {
-            Share tmp = new Share(name, rate);
-            addShare(tmp);
-        }
-    }
-    
-    /**
-     * addShare (Share tmp)
-     */
-    private void addShare(Share tmp) {
-        int foundPos = 0;
-        while (foundPos < shareArray.length && shareArray[foundPos] != null)
-            foundPos++;
-        shareArray[foundPos] = tmp;
-    }
-
-    /**
-     * findShare(String s)
-     */
-    private Share findShare(String s) {
-        int foundPos = 0;
-        while (shareArray[foundPos] != null && foundPos < shareArray.length
-                && !shareArray[foundPos].getName().equals(s))
-            foundPos++;
-        if (foundPos == shareArray.length || shareArray[foundPos] == null)
-            throw new ShareNotFoundException("Share nicht gefunden!");
-        else
-            return shareArray[foundPos];
-    }
-
-    /**
-     * checkShareDouplication(String playerName) 
-     *      sucht in der shareArray nach Shares mit dem gleichen Namen
-     */
-    private boolean checkShareDuplication(String shareName) {
-        boolean duplication = false;
-
-        for (int c = 0; c < shareArray.length; c++) {
-            if (shareArray[c] != null && shareArray[c].getName().equals(shareName)) {
-                duplication = true;
-                break;
-            }
-        }
-        return duplication;
-    }
  
     /**
      * getAssetValue(String playerName)
@@ -214,21 +149,7 @@ public class AccountManagerImpl implements AccountManager {
     public long getCashAccountValue(String playerName) {
         Player foundPlayer = findPlayer(playerName);
         return foundPlayer.getAccount().getAccountStatus();
-    }
-    
-    /**
-     * getShareValue(String playerName, String share)
-     */
-    public long getShareValue(String playerName, String share) {
-        Player foundPlayer = findPlayer(playerName);
-        ShareItem[] itemArray = foundPlayer.getDeposit().getItemArray();
-        
-        int foundPos1 = 0;
-        while (itemArray[foundPos1] != null && !itemArray[foundPos1].getName().equals(share) && foundPos1 < itemArray.length)
-            foundPos1++;
-    
-        return itemArray[foundPos1].getCurrentValue();
-    }
+    } 
 
     /**
      * toString()
@@ -240,12 +161,7 @@ public class AccountManagerImpl implements AccountManager {
         for (int c = 0; playerArray[c] != null && c < playerArray.length; c++)
             s = s + playerArray[c].toString() + '\r';
 
-        s = s + '\r' + "All registered Shares:" + '\r';
-
-        for (int c = 0; shareArray[c] != null && c < playerArray.length; c++)
-            s = s + shareArray[c].toString() + '\r';
-
-        return s;
+        return s + spp.toString();
     }
 
     /**
