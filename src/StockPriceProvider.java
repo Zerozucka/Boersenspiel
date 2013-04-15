@@ -1,3 +1,6 @@
+import animalpackage.Player;
+import animalpackage.Share;
+import assetpackage.ShareItem;
 import exceptionpackage.DuplicateException;
 import exceptionpackage.ShareNotFoundException;
 

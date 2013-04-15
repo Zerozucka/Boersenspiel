@@ -1,3 +1,5 @@
+import animalpackage.Player;
+import animalpackage.Share;
 import exceptionpackage.DuplicateException;
 import exceptionpackage.NegativeAmountException;
 import exceptionpackage.NotEnoughMoneyException;

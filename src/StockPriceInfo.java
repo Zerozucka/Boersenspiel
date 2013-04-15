@@ -1,3 +1,4 @@
+import animalpackage.Player;
 import exceptionpackage.DuplicateException;
 
 public interface StockPriceInfo {
