@@ -1,6 +1,4 @@
-package assetpackage;
 
-import animalpackage.Share;
 
 public class ShareItem extends Asset {
     private Share companyShare;

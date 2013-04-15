@@ -1,4 +1,3 @@
-package animalpackage;
 public class Share {
     private final String name; // company name, final (can only be set by constructor)
     private long rate;

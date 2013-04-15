@@ -1,4 +1,3 @@
-package assetpackage;
 
 public abstract class Asset {
     public String name;

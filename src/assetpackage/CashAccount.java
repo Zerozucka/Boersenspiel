@@ -1,4 +1,3 @@
-package assetpackage;
 import exceptionpackage.NotEnoughMoneyException;
 
 public class CashAccount extends Asset {

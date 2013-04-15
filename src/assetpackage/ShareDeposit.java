@@ -1,7 +1,3 @@
-package assetpackage;
-
-import animalpackage.Share;
-
 public class ShareDeposit extends Asset {
     private ShareItem[] itemArray = new ShareItem[10]; // contains all shareItems of one user
 
