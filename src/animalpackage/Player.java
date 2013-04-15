@@ -1,3 +1,8 @@
+package animalpackage;
+
+import assetpackage.CashAccount;
+import assetpackage.ShareDeposit;
+
 public class Player {
     private CashAccount acc;
     private ShareDeposit depo;
