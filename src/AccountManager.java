@@ -1,7 +1,5 @@
 import exceptionpackage.DuplicateException;
 import exceptionpackage.NotEnoughMoneyException;
-    
-    //testchange v2
 
 public interface AccountManager {
     /**

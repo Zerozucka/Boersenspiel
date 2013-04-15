@@ -199,6 +199,36 @@ public class AccountManagerImpl implements AccountManager {
                 + foundPlayer.getAccount().getAccountStatus();
         return value;
     }
+    
+    /**
+     * getDepositValue(String playerName)
+     */
+    public long getDepositValue(String playerName){
+        Player foundPlayer = findPlayer(playerName);
+        return foundPlayer.getDeposit().getCurrentValue();
+    }
+    
+    /**
+     * getCashAccountValue(String playerName)
+     */
+    public long getCashAccountValue(String playerName) {
+        Player foundPlayer = findPlayer(playerName);
+        return foundPlayer.getAccount().getAccountStatus();
+    }
+    
+    /**
+     * getShareValue(String playerName, String share)
+     */
+    public long getShareValue(String playerName, String share) {
+        Player foundPlayer = findPlayer(playerName);
+        ShareItem[] itemArray = foundPlayer.getDeposit().getItemArray();
+        
+        int foundPos1 = 0;
+        while (itemArray[foundPos1] != null && !itemArray[foundPos1].getName().equals(share) && foundPos1 < itemArray.length)
+            foundPos1++;
+    
+        return itemArray[foundPos1].getCurrentValue();
+    }
 
     /**
      * toString()
