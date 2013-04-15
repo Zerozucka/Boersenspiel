@@ -3,7 +3,7 @@ import exceptionpackage.NegativeAmountException;
 import exceptionpackage.NotEnoughMoneyException;
 import exceptionpackage.PlayerNotFoundException;
 import exceptionpackage.ShareNotFoundException;
-
+//test
 public class AccountManagerImpl implements AccountManager {
 
     private Player[] playerArray = new Player[10];
