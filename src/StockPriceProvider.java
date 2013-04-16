@@ -11,6 +11,13 @@ public abstract class StockPriceProvider implements StockPriceInfo {
     }
 
     /**
+     * getShareArray()
+     */
+    public Share[] getShareArray(){
+    	return shareArray;
+    }
+    
+    /**
      * createShare(String name, long rate)
      *      erzeugt eine neue Share und fuegt sie an die ShareArray an. 
      *      Ueberprueft vor dem Anfuegen, ob die Share schon vorhanden ist.
