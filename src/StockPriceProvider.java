@@ -4,7 +4,7 @@ import assetpackage.ShareItem;
 import exceptionpackage.DuplicateException;
 import exceptionpackage.ShareNotFoundException;
 
-public class StockPriceProvider implements StockPriceInfo {
+public abstract class StockPriceProvider implements StockPriceInfo {
     private Share[] shareArray = new Share[100];
     
     public StockPriceProvider() {
@@ -23,22 +23,24 @@ public class StockPriceProvider implements StockPriceInfo {
             addShare(tmp);
         }
     }
-    
-    
+
     /**
      * updateShareRate(Share share)
      * @param share
      * 		implementierung in den vererbten Klassen.
      */
-    public void updateShareRate(Share share){
-    }
+    public abstract void updateShareRate(Share share);
     
     
     /**
      * updateShareRates()
      */
-    public void updateShareRates(){
-    	
+    public void updateShareRates() {
+        
+    }
+    
+    public void startUpdate() {
+        
     }
     
     /**
