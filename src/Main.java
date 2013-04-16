@@ -11,6 +11,7 @@ public class Main {
         ViewerDemo vd = new ViewerDemo();
 
         System.out.println("Trying to create Players");
+        
         try {
             acc.createPlayer("Peter");
             acc.createPlayer("Klaus");
