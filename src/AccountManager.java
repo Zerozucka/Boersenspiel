@@ -7,7 +7,6 @@ public interface AccountManager {
      */
     public void createPlayer(String name) throws DuplicateException;
     
-
     /**
      * buyShare(String playerName, String shareName, long amount)
      * @throws NotEnoughMoneyException 
