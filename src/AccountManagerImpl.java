@@ -8,7 +8,7 @@ import exceptionpackage.PlayerNotFoundException;
 public class AccountManagerImpl implements AccountManager {
 
     private Player[] playerArray = new Player[10];
-    private StockPriceProvider spp;
+    private StockPriceInfo spp;
 
     public AccountManagerImpl() {
         this.spp = new ConstStockPriceProvider();
@@ -17,7 +17,7 @@ public class AccountManagerImpl implements AccountManager {
     /**
      * getStockPriceProvider()
      */
-    public StockPriceProvider getStockPriceProvider() {
+    public StockPriceInfo getStockPriceInfo() {
         return spp;
     }
 

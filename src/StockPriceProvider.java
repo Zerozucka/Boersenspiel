@@ -27,7 +27,7 @@ public abstract class StockPriceProvider implements StockPriceInfo {
     /**
      * updateShareRate(Share share)
      * @param share
-     * 		implementierung in den vererbten Klassen.
+     * 		Implementierung erfolgt in den vererbten Klassen.
      */
     public abstract void updateShareRate(Share share);
     
@@ -39,6 +39,9 @@ public abstract class StockPriceProvider implements StockPriceInfo {
         
     }
     
+    /**
+     * startUpdate()
+     */
     public void startUpdate() {
         
     }

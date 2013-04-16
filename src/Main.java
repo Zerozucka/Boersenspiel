@@ -2,11 +2,13 @@ import exceptionpackage.DuplicateException;
 import exceptionpackage.NegativeAmountException;
 import exceptionpackage.NotEnoughMoneyException;
 import exceptionpackage.PlayerNotFoundException;
+import graphicalpackage.ViewerDemo;
 
 public class Main {
     public static void main(String[] args) {
-        AccountManagerImpl acc = new AccountManagerImpl();
-        StockPriceProvider spp = acc.getStockPriceProvider();
+        AccountManager acc = new AccountManagerImpl();
+        StockPriceInfo spp = acc.getStockPriceInfo();
+        ViewerDemo vd = new ViewerDemo();
 
         System.out.println("Trying to create Players");
         try {

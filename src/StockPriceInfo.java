@@ -1,4 +1,5 @@
 import animalpackage.Player;
+import animalpackage.Share;
 import exceptionpackage.DuplicateException;
 
 public interface StockPriceInfo {
@@ -23,4 +24,9 @@ public interface StockPriceInfo {
      * creates a share and adds it to a list of all available shares
      */
     public void createShare(String name, long rate) throws DuplicateException;
+    
+    /**
+     * findShare(String s)
+     */
+    public Share findShare(String s);
 }
