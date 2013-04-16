@@ -1,4 +1,3 @@
-package graphicalpackage;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -13,6 +12,12 @@ public class ViewerDemo extends JFrame {
     private static final int TICK_PERIOD = 1000;
     private Timer ticker;
     private JLabel clockLabel;
+    
+    private StockPriceInfo spi;
+    
+    public ViewerDemo(AccountManager acc){
+    	this.spi = acc.getStockPriceInfo();
+    }
 
     private class TickerTask extends TimerTask {
         public void run() {
@@ -22,7 +27,7 @@ public class ViewerDemo extends JFrame {
         }
 
         private String createText() {     
-            String output = "<html><body>hallo <br> welt <br>"; 
+            String output = spi.allShares(); 
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
             DateFormat dateFormatter = DateFormat.getDateTimeInstance();
@@ -46,8 +51,8 @@ public class ViewerDemo extends JFrame {
         ticker.scheduleAtFixedRate(new TickerTask(), 1000, TICK_PERIOD);
     }
 
-    public static void main(String[] args) {
-        ViewerDemo viewerDemo = new ViewerDemo();
-        viewerDemo.start();
-    }
+//    public static void main(String[] args) {
+//        ViewerDemo viewerDemo = new ViewerDemo();
+//        viewerDemo.start();
+//    }
 }
