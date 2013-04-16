@@ -24,6 +24,23 @@ public class StockPriceProvider implements StockPriceInfo {
         }
     }
     
+    
+    /**
+     * updateShareRate(Share share)
+     * @param share
+     * 		implementierung in den vererbten Klassen.
+     */
+    public void updateShareRate(Share share){
+    }
+    
+    
+    /**
+     * updateShareRates()
+     */
+    public void updateShareRates(){
+    	
+    }
+    
     /**
      * addShare (Share tmp)
      */
