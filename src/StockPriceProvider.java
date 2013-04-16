@@ -1,3 +1,6 @@
+import java.util.Timer;
+import java.util.TimerTask;
+
 import animalpackage.Player;
 import animalpackage.Share;
 import assetpackage.ShareItem;
@@ -6,8 +9,10 @@ import exceptionpackage.ShareNotFoundException;
 
 public abstract class StockPriceProvider implements StockPriceInfo {
     private Share[] shareArray = new Share[100];
+
     
-    public StockPriceProvider() {
+    
+    public StockPriceProvider() {		//woher kommt der Constructor bei einer abstrakten klasse?
     }
 
     /**
@@ -33,8 +38,6 @@ public abstract class StockPriceProvider implements StockPriceInfo {
 
     /**
      * updateShareRate(Share share)
-     * @param share
-     * 		Implementierung erfolgt in den vererbten Klassen.
      */
     public abstract void updateShareRate(Share share);
     
@@ -42,15 +45,14 @@ public abstract class StockPriceProvider implements StockPriceInfo {
     /**
      * updateShareRates()
      */
-    public void updateShareRates() {
-        
-    }
+    public abstract void updateShareRates();
     
     /**
      * startUpdate()
      */
     public void startUpdate() {
-        
+    	GlobalTimer timer = GlobalTimer.getTimer();
+    	timer.startTiming(); //startet zwar timer, aber dieser kann nicht updateShareRates() aufrufen, da nicht im scope
     }
     
     /**
