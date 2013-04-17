@@ -15,6 +15,9 @@ public class Player {
         this.acc = new CashAccount(name);
         this.depo = new ShareDeposit(name);
         this.name = name;
+        
+        //jeder Spieler bekommt ein Startkapital von 1000 Euro
+        acc.addMoney(100000);
     }
 
     /**

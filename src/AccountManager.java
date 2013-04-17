@@ -4,6 +4,7 @@ import exceptionpackage.NotEnoughMoneyException;
 public interface AccountManager {
     /**
      * createPlayer(String name)
+     * 		jeder Spieler startet mit einem Kapital von 1000 Euro
      */
     public void createPlayer(String name) throws DuplicateException;
     

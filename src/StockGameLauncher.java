@@ -9,6 +9,7 @@ public class StockGameLauncher {
     private final static int CONST = 1;
     
     public static void main(String[] args) {
+    	
         AccountManager acc = new AccountManagerImpl();
         acc.setStockPriceProvider(RANDOM);
         StockPriceInfo spp = acc.getStockPriceProvider();
@@ -19,7 +20,7 @@ public class StockGameLauncher {
         try {
             acc.createPlayer("Peter");
             acc.createPlayer("Klaus");
-            acc.createPlayer("Peter"); // exceptiontest
+//            acc.createPlayer("Peter"); // exceptiontest, currently disabled for CommandProcessor test
             System.out.println("finished!");
         } catch (DuplicateException e) {
             e.printStackTrace();
@@ -42,7 +43,7 @@ public class StockGameLauncher {
         }
         
         spv.start();
-
+                
         System.out.println(acc.toString() + "\n");
 
         System.out.println("Trying to buy Shares");
@@ -69,5 +70,8 @@ public class StockGameLauncher {
         }
 
         System.out.println(acc.toString() + "\nfinished test!");
+        
+    	
+        
     }
 }
