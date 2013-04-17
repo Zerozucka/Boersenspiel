@@ -44,7 +44,8 @@ public abstract class StockPriceProvider implements StockPriceInfo {
      */
     public void startUpdate() {
     	GlobalTimer timer = GlobalTimer.getTimer();
-    	timer.startTiming(); //startet zwar timer, aber dieser kann nicht updateShareRates() aufrufen, da nicht im scope
+    	timer.setStockPriceProvider(this);
+    	timer.startTiming(); //bad implementation
     }
     
     /**

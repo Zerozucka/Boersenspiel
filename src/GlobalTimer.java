@@ -9,7 +9,11 @@ import java.util.TimerTask;
  */
 class GlobalTimer  {
 	private static GlobalTimer timer;
-	private int counter;
+	private StockPriceProvider spp;		//bad implementation
+	
+	public void setStockPriceProvider(StockPriceProvider tmp){
+		spp = tmp;
+	}
 	
 	/**
 	 * GlobalTimer()
@@ -36,7 +40,7 @@ class GlobalTimer  {
 	}
     
     private void modifyUserObject() {
-        System.out.println("modifyUserObject: " + ++counter);
+    	spp.updateShareRates();
     }
     
     public void startTiming() {
