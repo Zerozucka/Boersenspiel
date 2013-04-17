@@ -32,8 +32,8 @@ public interface AccountManager {
      * getCashAccountValue(String playerName)
      */
     public long getCashAccountValue(String playerName);
-    
-    public StockPriceInfo getStockPriceInfo();
+
+    public StockPriceProvider getStockPriceProvider();
 
     public void setCashAccountStatus(String string, long l);
 }

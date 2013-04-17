@@ -6,10 +6,9 @@ import exceptionpackage.PlayerNotFoundException;
 public class Main {
     public static void main(String[] args) {
         AccountManager acc = new AccountManagerImpl();
-        StockPriceInfo spp = acc.getStockPriceInfo();
+        StockPriceInfo spp = acc.getStockPriceProvider();
        
-        ViewerDemo vd = new ViewerDemo(acc);
-        vd.start();
+        StockPriceViewer spv = new StockPriceViewer(acc);
 
         System.out.println("Trying to create Players");
         

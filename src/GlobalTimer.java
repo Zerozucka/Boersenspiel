@@ -7,14 +7,16 @@ import java.util.TimerTask;
  * 		Es kann nur einen GlobalTimer geben, mehrere Instanzen koennen nicht erzeugt werden
  * 		Timer kann nur ueber die statisches Methode getTimer instanziiert / aufgerufen werden
  */
-class GlobalTimer  {
+class GlobalTimer {
 	private static GlobalTimer timer;
 	
 	/**
 	 * GlobalTimer()
 	 * 		constructor ist private fuer Singleton implementierung
 	 */
-	private GlobalTimer(){}
+	private GlobalTimer(){
+	    startTiming();
+	}
 	
 	
 	/**
@@ -30,14 +32,33 @@ class GlobalTimer  {
     
 	
 	private StockPriceProvider spp = null;
+	/**
+	 * setStockPriceProvider(StockPriceProvider spp)
+	 */
 	public void setStockPriceProvider(StockPriceProvider spp) {
 	    this.spp = spp;
 	}
-    
+	
+	private StockPriceViewer spv = null;
+	/**
+	 * setStockPriceViewer(StockPriceViewer spv)
+	 */
+	public void setStockPriceViewer(StockPriceViewer spv) {
+	    this.spv = spv;
+	}
+
+	/**
+	 * modifyUserObject()
+	 */
     private void modifyUserObject() {
-    	spp.updateShareRates();
+        if (spp != null)
+            spp.updateShareRates();
+        spv.start();
     }
     
+    /**
+     * startTiming()
+     */
     public void startTiming() {
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {

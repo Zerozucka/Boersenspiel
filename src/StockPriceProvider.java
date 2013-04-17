@@ -5,7 +5,8 @@ import exceptionpackage.DuplicateException;
 import exceptionpackage.ShareNotFoundException;
 
 public abstract class StockPriceProvider implements StockPriceInfo {
-    private Share[] shareArray = new Share[100];
+    protected Share[] shareArray = new Share[100];
+    protected GlobalTimer timer = GlobalTimer.getTimer();
     
     /**
      * getShareArray()
@@ -31,21 +32,21 @@ public abstract class StockPriceProvider implements StockPriceInfo {
     /**
      * updateShareRate(Share share)
      */
-    public abstract void updateShareRate(Share share);
+    protected abstract void updateShareRate(Share share);
     
     
     /**
      * updateShareRates()
      */
-    public abstract void updateShareRates();
+    protected void updateShareRates() {
+        
+    }
     
     /**
      * startUpdate()
      */
     public void startUpdate() {
-    	GlobalTimer timer = GlobalTimer.getTimer();
     	timer.setStockPriceProvider(this);
-    	timer.startTiming(); //bad implementation
     }
     
     /**
@@ -102,7 +103,7 @@ public abstract class StockPriceProvider implements StockPriceInfo {
     public String allShares() {
         String s = "";
         for (int c = 0; shareArray[c] != null && c < shareArray.length; c++)
-            s = s + shareArray[c].toString() + '\r';
+            s = s + shareArray[c].toString() + '\n';
         return s;
     }
 

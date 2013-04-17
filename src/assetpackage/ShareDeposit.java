@@ -107,7 +107,17 @@ public class ShareDeposit extends Asset {
     public long getCurrentValue() {
         long value = 0;
         for (int c = 0; itemArray[c] != null && c < itemArray.length; c++)
-            value = value + itemArray[c].getCurrentValue();
+            value += itemArray[c].getCurrentValue();
+        return value;
+    }
+    
+    /**
+     * getSpentMoney()
+     */
+    public long getSpentMoney() {
+        long value = 0;
+        for (int c = 0; itemArray[c] != null && c < itemArray.length; c++)
+            value += itemArray[c].getShareValue();
         return value;
     }
 

@@ -7,19 +7,12 @@ public class ConstStockPriceProvider extends StockPriceProvider {
     }
     /**
      * startUpdate()
-     * 		wird hier "implementiert", da bei Konstaten Raten keine Update Funktion nötig ist.
+     * 		wird hier "implementiert", da bei Konstaten Raten keine Update Funktion noetig ist.
      */
-    public void startUpdate() {
-        /*soll leer bleiben*/
-    }
+    public void startUpdate() {}
     
-	public void updateShareRate(Share share) {
-	    
-	}
-
-
-	public void updateShareRates() {
-
-		
-	}
+    /**
+     * updateShareRate(Share share)
+     */
+	public void updateShareRate(Share share) {}
 }
