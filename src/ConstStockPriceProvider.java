@@ -1,3 +1,5 @@
+
+
 import animalpackage.Share;
 
 public class ConstStockPriceProvider extends StockPriceProvider {

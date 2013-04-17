@@ -1,6 +1,7 @@
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
+
 @SuppressWarnings("serial")
 public class StockPriceViewer extends JFrame {
     private GlobalTimer timer = GlobalTimer.getTimer();
