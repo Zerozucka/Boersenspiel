@@ -42,6 +42,6 @@ public class Share {
             rateInEuro += "." + "0" + rate%100;
         else
             rateInEuro += "." + rate%100;
-        return (name + ": " + rateInEuro + "€");
+        return (name + ": " + rateInEuro + " Euro");
     }
 }
