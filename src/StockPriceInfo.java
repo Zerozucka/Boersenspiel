@@ -29,4 +29,6 @@ public interface StockPriceInfo {
      * findShare(String s)
      */
     public Share findShare(String s);
+
+    public void updateShareRates();
 }

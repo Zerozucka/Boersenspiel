@@ -1,22 +1,21 @@
-
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 public class StockPriceViewer extends JFrame {
     private GlobalTimer timer = GlobalTimer.getTimer();
     private JTextArea shareArea;
-    private StockPriceProvider spp;
+    private StockPriceInfo spi;
     
     public StockPriceViewer(AccountManager acc){
-    	this.spp = acc.getStockPriceProvider();
-    	timer.setStockPriceProvider(spp);
+    	this.spi = acc.getStockPriceProvider();
+    	timer.setStockPriceInfo(spi);
     	timer.setStockPriceViewer(this);
     	init();
     }
 
     public void init() {
-        shareArea = new JTextArea("initialize...");
+        shareArea = new JTextArea("> initialize...");
         shareArea.setEditable(false);
         add("Center", shareArea);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -25,6 +24,6 @@ public class StockPriceViewer extends JFrame {
     }
     
     public void start() {
-        shareArea.setText(spp.allShares());
+        shareArea.setText(spi.allShares());
     }
 }

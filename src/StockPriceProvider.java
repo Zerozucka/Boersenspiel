@@ -38,7 +38,7 @@ public abstract class StockPriceProvider implements StockPriceInfo {
     /**
      * updateShareRates()
      */
-    protected void updateShareRates() {
+    public void updateShareRates() {
         
     }
     
@@ -46,7 +46,7 @@ public abstract class StockPriceProvider implements StockPriceInfo {
      * startUpdate()
      */
     public void startUpdate() {
-    	timer.setStockPriceProvider(this);
+    	timer.setStockPriceInfo(this);
     }
     
     /**

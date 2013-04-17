@@ -37,6 +37,11 @@ public class Share {
      * toString();
      */
     public String toString() {
-        return (name + " Wert : " + rate);
+        String rateInEuro = "" + rate/100;
+        if (rate%100 < 10)
+            rateInEuro += "." + "0" + rate%100;
+        else
+            rateInEuro += "." + rate%100;
+        return (name + ": " + rateInEuro + "€");
     }
 }

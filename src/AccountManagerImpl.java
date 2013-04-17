@@ -6,12 +6,25 @@ import exceptionpackage.NotEnoughMoneyException;
 import exceptionpackage.PlayerNotFoundException;
 
 public class AccountManagerImpl implements AccountManager {
-
     private Player[] playerArray = new Player[10];
     private StockPriceProvider spp;
+    
+    private final int RANDOM = 0;
+    private final int CONST = 1;
 
     public AccountManagerImpl() {
-        this.spp = new RandomStockPriceProvider();
+    }
+    
+    /**
+     * setStockPriceProvider()
+     */
+    public void setStockPriceProvider(int wahl) {
+        if(wahl == RANDOM)
+            this.spp = new RandomStockPriceProvider();
+        else if (wahl == CONST)
+            this.spp = new ConstStockPriceProvider();
+        else
+            this.spp = null;
     }
 
     /**

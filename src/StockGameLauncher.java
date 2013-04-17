@@ -3,11 +3,15 @@ import exceptionpackage.NegativeAmountException;
 import exceptionpackage.NotEnoughMoneyException;
 import exceptionpackage.PlayerNotFoundException;
 
-public class Main {
+public class StockGameLauncher {
+    private final static int RANDOM = 0;
+    @SuppressWarnings("unused")
+    private final static int CONST = 1;
+    
     public static void main(String[] args) {
         AccountManager acc = new AccountManagerImpl();
+        acc.setStockPriceProvider(RANDOM);
         StockPriceInfo spp = acc.getStockPriceProvider();
-       
         StockPriceViewer spv = new StockPriceViewer(acc);
 
         System.out.println("Trying to create Players");
@@ -28,14 +32,16 @@ public class Main {
 
         System.out.println("Trying to create Shares");
         try {
-            spp.createShare("BMW", 500);
+            spp.createShare("BMW", 5000);
             spp.createShare("Google", 70000);
-            spp.createShare("VW", 100);
+            spp.createShare("VW", 10000);
             System.out.println("finished!\n");
         } catch (DuplicateException e) {
             e.printStackTrace();
             System.out.println("> Wanted Exception! Continuing...\n");
         }
+        
+        spv.start();
 
         System.out.println(acc.toString() + "\n");
 

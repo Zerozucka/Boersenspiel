@@ -31,12 +31,12 @@ class GlobalTimer {
 	}
     
 	
-	private StockPriceProvider spp = null;
+	private StockPriceInfo spi = null;
 	/**
-	 * setStockPriceProvider(StockPriceProvider spp)
+	 * setStockPriceInfo(StockPriceInfo spi)
 	 */
-	public void setStockPriceProvider(StockPriceProvider spp) {
-	    this.spp = spp;
+	public void setStockPriceInfo(StockPriceInfo spi) {
+	    this.spi = spi;
 	}
 	
 	private StockPriceViewer spv = null;
@@ -51,8 +51,8 @@ class GlobalTimer {
 	 * modifyUserObject()
 	 */
     private void modifyUserObject() {
-        if (spp != null)
-            spp.updateShareRates();
+        if (spi != null)
+            spi.updateShareRates();
         spv.start();
     }
     

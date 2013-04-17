@@ -1,5 +1,6 @@
 package exceptionpackage;
 
+@SuppressWarnings("serial")
 public class NotEnoughMoneyException extends Exception {
     public NotEnoughMoneyException() { super(); };
 

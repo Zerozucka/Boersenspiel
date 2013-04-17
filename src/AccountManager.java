@@ -36,4 +36,6 @@ public interface AccountManager {
     public StockPriceProvider getStockPriceProvider();
 
     public void setCashAccountStatus(String string, long l);
+
+    public void setStockPriceProvider(int random);
 }
