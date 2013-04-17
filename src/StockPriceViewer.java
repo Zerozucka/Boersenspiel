@@ -9,7 +9,7 @@ public class StockPriceViewer extends JFrame {
     
     public StockPriceViewer(AccountManager acc){
     	this.spi = acc.getStockPriceProvider();
-    	timer.setStockPriceInfo(spi);
+    	spi.startUpdate();
     	timer.setStockPriceViewer(this);
     	init();
     }
