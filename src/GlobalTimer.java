@@ -4,14 +4,14 @@ import java.util.TimerTask;
 /**
  * GlobalTimer
  * 		singelton class
- * 		Es kann nur einen GlobalTimer geben, mehrere Instanzen können nicht erzeugt werden
- * 		Timer kann nur über die statisches Methode getTimer instanziert / aufgerufen werden
+ * 		Es kann nur einen GlobalTimer geben, mehrere Instanzen koennen nicht erzeugt werden
+ * 		Timer kann nur ueber die statisches Methode getTimer instanziiert / aufgerufen werden
  */
 class GlobalTimer  {
 	private static GlobalTimer timer;
 	private int counter;
 	
-	/*
+	/**
 	 * GlobalTimer()
 	 * 		constructor ist private fuer Singleton implementierung
 	 */
@@ -29,6 +29,11 @@ class GlobalTimer  {
 		return timer;	
 	}
     
+	
+	private StockPriceInfo spi = null;
+	public void setStockPriceInfo(StockPriceInfo spi) {
+	    this.spi = spi;
+	}
     
     private void modifyUserObject() {
         System.out.println("modifyUserObject: " + ++counter);

@@ -1,6 +1,3 @@
-import java.util.Timer;
-import java.util.TimerTask;
-
 import animalpackage.Player;
 import animalpackage.Share;
 import assetpackage.ShareItem;
@@ -9,12 +6,7 @@ import exceptionpackage.ShareNotFoundException;
 
 public abstract class StockPriceProvider implements StockPriceInfo {
     private Share[] shareArray = new Share[100];
-
     
-    
-    public StockPriceProvider() {		//woher kommt der Constructor bei einer abstrakten klasse?
-    }
-
     /**
      * getShareArray()
      */
