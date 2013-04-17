@@ -9,11 +9,6 @@ import java.util.TimerTask;
  */
 class GlobalTimer  {
 	private static GlobalTimer timer;
-	private StockPriceProvider spp;		//bad implementation
-	
-	public void setStockPriceProvider(StockPriceProvider tmp){
-		spp = tmp;
-	}
 	
 	/**
 	 * GlobalTimer()
@@ -34,9 +29,9 @@ class GlobalTimer  {
 	}
     
 	
-	private StockPriceInfo spi = null;
-	public void setStockPriceInfo(StockPriceInfo spi) {
-	    this.spi = spi;
+	private StockPriceProvider spp = null;
+	public void setStockPriceProvider(StockPriceProvider spp) {
+	    this.spp = spp;
 	}
     
     private void modifyUserObject() {
