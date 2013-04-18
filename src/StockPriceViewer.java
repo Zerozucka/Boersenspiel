@@ -9,10 +9,10 @@ public class StockPriceViewer extends JFrame {
     private StockPriceInfo spi;
     
     public StockPriceViewer(AccountManager acc){
+        init();
+        timer.setStockPriceViewer(this);
     	this.spi = acc.getStockPriceProvider();
     	spi.startUpdate();
-    	timer.setStockPriceViewer(this);
-    	init();
     }
 
     public void init() {
@@ -24,7 +24,7 @@ public class StockPriceViewer extends JFrame {
         setVisible(true);
     }
     
-    public void start() {
+    public void update() {
         shareArea.setText(spi.allShares());
     }
 }

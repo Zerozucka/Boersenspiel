@@ -103,10 +103,14 @@ public abstract class StockPriceProvider implements StockPriceInfo {
      *      String mit allen Shares, Name und Wert
      */
     public String allShares() {
-        String s = "";
-        for (int c = 0; shareArray[c] != null && c < shareArray.length; c++)
-            s = s + shareArray[c].toString() + '\n';
-        return s;
+        if (shareArray[0] != null) {
+            String s = "";
+            for (int c = 0; shareArray[c] != null && c < shareArray.length; c++)
+                s = s + shareArray[c].toString() + '\n';
+            return s;
+        } else {
+            return "";
+        }
     }
 
     /**
