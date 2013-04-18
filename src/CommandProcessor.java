@@ -1,5 +1,5 @@
-import exceptionpackage.DuplicateException;
 import exceptionpackage.NotEnoughMoneyException;
+import exceptionpackage.PlayerNotFoundException;
 
 public class CommandProcessor {
     AccountManager acc;
@@ -20,9 +20,12 @@ public class CommandProcessor {
                     System.exit(0);
                 }
 
+
                 try {
-                    System.out
-                            .println("Spieler konnte nicht gefunden werden, soll ein neuer Spieler erstellt werden? (ja/nein)");
+                    acc.findPlayer(playerName);
+                    System.out.println("Spieler gefunden, Login erfolgt!\n");
+                } catch (PlayerNotFoundException e) {
+                    System.out.println("Spieler konnte nicht gefunden werden, soll ein neuer Spieler erstellt werden? (ja/nein)");
                     String abfrage = System.console().readLine("> ");
                     switch (abfrage) {
                         case "ja":
@@ -37,9 +40,6 @@ public class CommandProcessor {
                             playerName = null;
                             break;
                     }
-
-                } catch (DuplicateException e) {
-                    System.out.println("Spieler gefunden, Login erfolgt!\n");
                 }
                 currentPlayer = playerName;
             } else {

@@ -110,7 +110,7 @@ public class AccountManagerImpl implements AccountManager {
     /**
      * findPlayer(String s)
      */
-    private Player findPlayer(String s) {
+    public Player findPlayer(String s) {
         int foundPos = 0;
         while (playerArray[foundPos] != null && foundPos < playerArray.length
                 && !playerArray[foundPos].getName().equals(s))

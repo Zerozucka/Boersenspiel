@@ -1,3 +1,4 @@
+import animalpackage.Player;
 import exceptionpackage.DuplicateException;
 import exceptionpackage.NotEnoughMoneyException;
 
@@ -39,4 +40,6 @@ public interface AccountManager {
     public void setCashAccountStatus(String string, long l);
 
     public void setStockPriceProvider(int random);
+
+    public Player findPlayer(String playerName);
 }
