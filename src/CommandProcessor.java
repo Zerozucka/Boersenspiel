@@ -57,7 +57,6 @@ public class CommandProcessor {
                         try {
                             long amount = Integer.parseInt(amountInput);
                             acc.buyShare(currentPlayer, shareName, amount);
-                            System.out.println("Kauf der Aktie " + shareName + " erfolgreich\n");
                         } catch (NotEnoughMoneyException e) {
                             System.out.println("Nicht ausreichend Geld vorhanden!\n");
                         } catch (NumberFormatException e) {
@@ -76,7 +75,6 @@ public class CommandProcessor {
                         try {
                             long amount = Integer.parseInt(amountInput);
                             acc.sellShare(currentPlayer, shareName, amount);
-                            System.out.println("Verkauf der Aktie " + shareName + " erfolgreich");
                         } catch (NumberFormatException e) {
                             System.out.println("Keine Zahl eingegeben!\n");
                         }
