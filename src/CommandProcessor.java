@@ -44,7 +44,7 @@ public class CommandProcessor {
                 currentPlayer = playerName;
             } else {
 
-                String s = System.console().readLine("> ");
+                String s = System.console().readLine(currentPlayer + "> ");
 
                 switch (s) {
                     case ("buy"): {
@@ -57,6 +57,7 @@ public class CommandProcessor {
                         try {
                             long amount = Integer.parseInt(amountInput);
                             acc.buyShare(currentPlayer, shareName, amount);
+                            System.out.println();
                         } catch (NotEnoughMoneyException e) {
                             System.out.println("Nicht ausreichend Geld vorhanden!\n");
                         } catch (NumberFormatException e) {
@@ -75,6 +76,7 @@ public class CommandProcessor {
                         try {
                             long amount = Integer.parseInt(amountInput);
                             acc.sellShare(currentPlayer, shareName, amount);
+                            System.out.println();
                         } catch (NumberFormatException e) {
                             System.out.println("Keine Zahl eingegeben!\n");
                         }

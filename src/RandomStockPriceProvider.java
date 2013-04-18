@@ -4,7 +4,7 @@ import animalpackage.Share;
 import java.util.Random;
 
 public class RandomStockPriceProvider extends StockPriceProvider {
-    private int changeRate = 20;
+    private int changeRate = 50;
 	Random randomGenerator = new java.util.Random();
 	
 	/**
