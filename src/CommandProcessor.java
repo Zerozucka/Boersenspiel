@@ -85,12 +85,12 @@ public class CommandProcessor {
                     }
 
                     case ("cash"):
-                        System.out.println("Aktuelles Guthaben: " + acc.getCashAccountValue(currentPlayer) + " Euro\n");
+                        System.out.println("Aktuelles Guthaben: " + acc.getCashAccountValue(currentPlayer) + " Cent\n");
                         break;
 
                     case ("depovalue"):
                         System.out.println("Aktuelles Wert des Depots: " + acc.getDepositValue(currentPlayer)
-                                + " Euro\n");
+                                + " Cent\n");
                         break;
 
                     case ("logout"):
@@ -100,7 +100,7 @@ public class CommandProcessor {
 
                     case ("assetvalue"):
                         System.out.println("Aktueller Wert aller Vermoegenswerte " + acc.getAssetValue(currentPlayer)
-                                + " Euro\n");
+                                + " Cent\n");
                         break;
 
                     case ("quit"):
